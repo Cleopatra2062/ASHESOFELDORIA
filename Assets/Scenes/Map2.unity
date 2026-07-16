@@ -95664,6 +95664,8 @@ GameObject:
   - component: {fileID: 790233912}
   - component: {fileID: 790233911}
   - component: {fileID: 790233913}
+  - component: {fileID: 790233915}
+  - component: {fileID: 790233914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -95839,14 +95841,52 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   checkRadius: 0.2
+  isGrounded: 0
   dashForce: 24
   dashTime: 0.2
   dashCooldown: 1
+  isDashing: 0
   enableWallJump: 1
   wallCheck: {fileID: 1952457520}
   wallSlideSpeed: 2
   wallJumpForce: {x: 8, y: 12}
   wallJumpDuration: 0.15
+  isWallSliding: 0
+  horizontalInput: 0
+--- !u!95 &790233914
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790233908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5c37fbde81cfc547ae8c5b3bb5b37e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &790233915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790233908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8040bf742ee2824f946b20ab8dd33bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
 --- !u!1 &985906333
 GameObject:
   m_ObjectHideFlags: 0

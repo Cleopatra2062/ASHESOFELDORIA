@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashForce = 24f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 1f;
     private bool canDash = true;
-    private bool isDashing;
+    public bool isDashing;
 
     [Header("Wall Jump Settings")]
     [SerializeField] private bool enableWallJump = true; // Bật / Tắt tính năng nhảy tường ở đây
@@ -26,13 +26,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallSlideSpeed = 2f;
     [SerializeField] private Vector2 wallJumpForce = new Vector2(8f, 12f);
     [SerializeField] private float wallJumpDuration = 0.15f;
-    private bool isWallSliding;
+    public bool isWallSliding;
     private bool isWallJumping;
     private float wallJumpDirection;
     private float wallCheckRadius = 0.2f;
 
     private Rigidbody2D rb;
-    private float horizontalInput;
+    public float horizontalInput;
     private bool facingRight = true;
 
     void Start()
