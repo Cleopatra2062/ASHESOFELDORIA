@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Nếu đang Dash thì không nhận thêm input di chuyển/nhảy khác
         if (isDashing) return;
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -52,23 +53,24 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        // --- KÍCH HOẠT DASH ---
+        // --- KÍCH HOẠT DASH (Phím Shift Trái) ---
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(DashCoroutine());
         }
 
-        // --- NHẢY TƯỜNG ---
+        // --- NHẢY TƯỜNG (Nếu được bật) ---
         if (enableWallJump)
         {
             WallSlide();
             WallJump();
         }
 
-        // --- XOAY MẶT (Đã sửa) ---
-        // Chỉ khóa Flip khi nhân vật đang ở trên không VÀ (đang trượt tường HOẶC đang nhảy tường)
-        // Nếu nhân vật đang ở trên mặt đất (isGrounded == true), luôn cho phép Flip bình thường.
-        Flip();
+        // Xoay mặt (Chỉ xoay khi không bám tường và không trong quá trình nhảy tường)
+        if (!isWallSliding && !isWallJumping)
+        {
+            Flip();
+        }
     }
 
     void FixedUpdate()
@@ -119,16 +121,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallSlide()
     {
-        // Chỉ trượt tường khi: Ở TRÊN KHÔNG (!isGrounded) + Chạm tường (IsWalled) + Có nhấn giữ phím hướng vào tường
+        // Điều kiện trượt tường: Đang không ở dưới đất + đang chạm tường + có nhấn giữ phím di chuyển ép sát vào tường
         if (!isGrounded && IsWalled() && horizontalInput != 0)
         {
             isWallSliding = true;
-            // Ghìm tốc độ rơi
+            // Ghìm tốc độ rơi tự do lại bằng tốc độ trượt tường dốc xuống
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue));
         }
         else
         {
-            // Nếu chạm đất hoặc không thỏa mãn điều kiện, lập tức tắt trạng thái trượt tường
             isWallSliding = false;
         }
     }
@@ -169,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // ================= TIỆN ÍCH KHÁC =================
-    public void Flip()
+    private void Flip()
     {
         if (horizontalInput > 0 && !facingRight || horizontalInput < 0 && facingRight)
         {
