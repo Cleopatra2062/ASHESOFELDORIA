@@ -3,14 +3,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator anim;
-    private PlayerMovement movement;
-    private Rigidbody2D rb;
+    public PlayerMovement movement;
+    public Rigidbody2D rb;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        movement = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
