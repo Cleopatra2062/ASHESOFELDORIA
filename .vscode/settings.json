@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "ASHESOFELDORIA.slnx"
+    "dotnet.defaultSolution": "Ashes of Eldoria.slnx"
 }
