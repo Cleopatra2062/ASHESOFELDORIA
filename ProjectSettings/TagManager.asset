@@ -56,5 +56,17 @@ TagManager:
   - name: Object
     uniqueID: 1993424877
     locked: 0
+  - name: sky1
+    uniqueID: 2730639097
+    locked: 0
+  - name: sky2
+    uniqueID: 1326748213
+    locked: 0
+  - name: sky3
+    uniqueID: 4198754183
+    locked: 0
+  - name: build
+    uniqueID: 1197388851
+    locked: 0
   m_RenderingLayers:
   - Default
